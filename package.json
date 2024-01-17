@@ -1,0 +1,11 @@
+{
+  "name": "sleep3",
+  "version": "1.0.0",
+  "description": "added a new package.json",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "janhavi",
+  "license": "ISC"
+}
