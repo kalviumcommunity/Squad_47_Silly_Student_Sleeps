@@ -1,1 +1,11 @@
-
+{
+  "name": "squad_47_silly_student_sleeps",
+  "version": "1.0.0",
+  "description": "This is project of list of students sleeping in class and lists of meme and videos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Janhavi Chauhan",
+  "license": "ISC"
+}
