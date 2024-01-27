@@ -1,16 +1,26 @@
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 3000;
+const express = require('express');
+const app = express();
+const port = 3000;
+const mongoose = require('mongoose');
 
+const uri = 'mongodb+srv://chauhanjanhavi45:Janhavi123@sleep.6wml463.mongodb.net/?retryWrites=true&w=majority';
 
-app.get('/', (req, res) => {
-	res.send('This server is working ')
-})
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to the database');
 
-if (require.main === module) {
-	app.listen(port, () => {
-		console.log(`🚀 server running on PORT: ${port}`)
-	})
-}
+    app.get("/", (req, res) => {
+      res.json({ connection: "Connected", message: "Welcome to the server!" });
+    });
 
-module.exports = app
+    app.listen(port, () => {
+      console.log(`🚀 Server running on PORT: ${port}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Error connecting to the database:', error);
+
+    app.get("/", (req, res) => {
+      res.json({ connection: "Not Connected", message: "Failed to connect to the database.", error: error.message });
+    });
+  });
