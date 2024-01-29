@@ -10,7 +10,7 @@ const data = [
     "MEME": "Meme",
     "PHOTOGRAPH": "Photo",
     "REASON": "Reason",
-    "HOUR SLEPT": 2
+    "HOUR SLEPT": 22
   },
   
 ];
