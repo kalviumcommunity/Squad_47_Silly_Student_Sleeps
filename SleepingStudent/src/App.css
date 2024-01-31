@@ -1,0 +1,88 @@
+
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+}
+
+.App {
+  text-align: center;
+}
+
+header {
+  background-color: #282c34;
+  padding: 2px;
+  color: white;
+}
+
+main {
+  padding: 20px;
+}
+
+#meme-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.meme-info {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+ 
+}
+
+.name{
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+  animation: colorChange 2s infinite alternate;
+}
+
+@keyframes colorChange {
+  from {
+    color: #4fa3d1;
+  }
+  to {
+    color: black;
+  }
+}
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #61dafb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.5s;
+}
+
+button:hover {
+  background-color: #4fa3d1;
+}
+
+
+#meme-container img {
+  max-width: 100%;
+  height: auto;
+  width: 250px; 
+  height: 250px; 
+}
