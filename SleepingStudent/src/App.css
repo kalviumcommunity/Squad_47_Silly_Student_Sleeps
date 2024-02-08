@@ -1,9 +1,10 @@
 
-
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #f0f0f0;
+  background: linear-gradient(to bottom, #6ec1edd2, #f0f0f0); 
+  /* background-color:#f0f0f0; */
 }
 
 .App {
@@ -14,6 +15,7 @@ header {
   background-color: #282c34;
   padding: 2px;
   color: white;
+  text-align: center;
 }
 
 main {
@@ -23,15 +25,18 @@ main {
 #meme-container {
   position: relative;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+  height: 250px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
 }
 
 .text-overlay {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -44,31 +49,35 @@ img {
   background-color: #fff;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
- 
 }
 
-.name{
+.name {
   font-weight: bold;
   font-size: 20px;
   margin-bottom: 10px;
-  animation: colorChange 2s infinite alternate;
+  animation: colorChange 1s infinite alternate;
 }
 
 @keyframes colorChange {
-  from {
-    color: #4fa3d1;
+  0% {
+    color: #4fa3d1; 
   }
-  to {
-    color: black;
+  50% {
+    color:#1691ba; 
+  }
+  100% {
+    color: black; 
   }
 }
+
+
 button {
   padding: 10px 15px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #61dafb;
+  background-color: #13beed;
   color: white;
   border: none;
   border-radius: 5px;
@@ -76,13 +85,8 @@ button {
 }
 
 button:hover {
-  background-color: #4fa3d1;
+  background-color: #0e3042;
 }
 
 
-#meme-container img {
-  max-width: 100%;
-  height: auto;
-  width: 250px; 
-  height: 250px; 
-}
+
