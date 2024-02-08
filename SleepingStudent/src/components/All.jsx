@@ -6,7 +6,7 @@ import MemeSelection from './MemeSelection';
 const Main = (props) => {
   return (
     <main>
-      <MemeContainer {...props} />
+    {/* //   <MemeContainer {...props} /> */}
       <MemeInfo {...props} />
       <MemeSelection {...props} />
     </main>
