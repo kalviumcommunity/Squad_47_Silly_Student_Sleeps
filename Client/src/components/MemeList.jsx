@@ -63,7 +63,7 @@ const App = () => {
   const [randomMeme, setRandomMeme] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:3000')
+    axios.get('http://localhost:3001')
       .then(response => {
         setMemes(response.data);
         setSelectedName(getRandomElement(names));
