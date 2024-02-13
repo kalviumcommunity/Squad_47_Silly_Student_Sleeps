@@ -5,6 +5,7 @@ const MemeSelection = ({ handleRandomize }) => {
     <div className="meme-selection">
       <button className='' onClick={handleRandomize}>Generate Random Meme</button>
     </div>
+    
   );
 };
 
