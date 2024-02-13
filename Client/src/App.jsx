@@ -150,20 +150,76 @@
 
 // export default App;
 
-import React from 'react'
-import App from './components/MemeList'
-import './App.css'
-import Header from './components/Header'
+// import React from 'react'
+// import App from './components/MemeList'
+// import './App.css'
+// import Header from './components/Header'
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import Users from './components/Users';
+// import CreateUser from './components/CreateUser';
+// import { BrowserRouter as  Router ,Routes, Route } from 'react-router-dom';
 
+
+// const Application = () => {
+//   return (
+//     <div>
+//       <Header/>
+//       <App/>
+//       <Router>
+//       <Routes>
+//         <Route path='/' element={<Users />} />
+//         <Route path='/createUser' element={<CreateUser />} />
+//       </Routes>
+//     </Router>
+//     </div>
+//   )
+// }
+
+// export default Application
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/Header';
+import Users from './components/Users';
+import App from './components/MemeList';
+import './App.css';
+import CreateUser from './components/CreateUser';
 
 const Application = () => {
   return (
-    <div>
-      <Header/>
-      <App/>
-    </div>
-  )
-}
+    <Router>
+      <div>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/createUser" element={<CreateUser />} />
+          <Route path="/app" element={<App />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
 
-export default Application
+const Home = () => {
+  return (
+    <div className="Content">
+      <h2>Welcome to the Sleeping App</h2>
+      <p>"Meet our resident champion in the sport of snoozing, the one and only hypersomniac!
+         Armed with a pillow and blanket, they embark on epic adventures into the dream world,
+          where they conquer dragons of drowsiness and slay monsters of sleeplessness. 
+          With a knack for turning any surface into a comfy bed and a superpower for dozing off in record time, 
+          they're the reigning monarch of nap time and the grandmaster of the snooze button. 
+          Just don't expect them to join you for early morning adventures—they're too busy ruling the kingdom of Zzzs!"
+      </p>
+      <div className="d-flex justify-content-center">
+      <Link to="/app" className="btn btn-secondary ms-2 p-2 w-50">Go to App</Link>
+      </div>
+      <Users />
+    </div>
+  );
+};
+
+export default Application;
+
 

@@ -3,8 +3,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom, #6ec1edd2, #f0f0f0); 
   /* background-color:#f0f0f0; */
+  /* background: 100%; */
 }
 
 .App {
@@ -12,10 +12,20 @@ body {
 }
 
 header {
-  background-color: #282c34;
+  /* background:linear-gradient(to right, #282c34, #4a91e2fd); */
+  background-color:#282c34 ;
+  min-height: 15vh;
   padding: 2px;
   color: white;
   text-align: center;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4) ;
+}
+
+h1{
+  font-size: 50px;
+  text-align: center;
+  font-weight: 700;
+
 }
 
 main {
@@ -49,6 +59,7 @@ img {
   background-color: #fff;
   padding: 10px;
   border-radius: 5px;
+  border: 0.75px solid #ccc;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
@@ -65,7 +76,7 @@ img {
     color: #4fa3d1; 
   }
   50% {
-    color:#1691ba; 
+    color:#007bff; 
   }
   100% {
     color: black; 
@@ -77,7 +88,7 @@ button {
   padding: 10px 15px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #13beed;
+  background-color:#007bff;
   color: white;
   border: none;
   border-radius: 5px;
@@ -87,6 +98,23 @@ button {
 button:hover {
   background-color: #0e3042;
 }
+
+h2{
+  font-size: 35px;
+  text-align: center;
+  font-weight: 700;
+  color:#007bff;
+}
+
+p{
+  font-size: 12px;  
+  text-align: center;
+}
+
+
+
+
+
 
 
 
