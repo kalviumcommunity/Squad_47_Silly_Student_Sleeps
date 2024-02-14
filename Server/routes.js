@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const port = 5000;
 
+//This code was for performing CRUD operations no relation with App
+
 const data = [
   {
     "NAME": "Janhavi",

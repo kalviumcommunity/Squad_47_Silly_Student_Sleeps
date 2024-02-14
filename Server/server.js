@@ -3,7 +3,9 @@ const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
 
-const uri = 'mongodb+srv://chauhanjanhavi45:Janhavi123@sleep.6wml463.mongodb.net/?retryWrites=true&w=majority';
+//This code is for PLU no work with app
+
+const uri = 'mongodb+srv://janhavi:janhavi02@sleep.6wml463.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
