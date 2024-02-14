@@ -5,6 +5,8 @@ body {
   font-family: 'Arial', sans-serif;
   /* background-color:#f0f0f0; */
   /* background: 100%; */
+  background:linear-gradient(to right, #282c3449, #1270dbc7);
+  box-sizing: border-box;
 }
 
 .App {
@@ -103,12 +105,20 @@ h2{
   font-size: 35px;
   text-align: center;
   font-weight: 700;
-  color:#007bff;
+  color:#282c34;
 }
 
 p{
   font-size: 12px;  
   text-align: center;
+}
+
+.btn-success {
+  display: inline-block;
+}
+
+.btn-success.mb-3.mt-3.w-50.p-2 {
+  margin-left: 25.40%;
 }
 
 

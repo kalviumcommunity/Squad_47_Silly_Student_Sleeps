@@ -1,0 +1,11 @@
+{
+  "name": "squad_47_silly_student_sleeps",
+  "version": "1.0.0",
+  "description": "SSSC : Silly Student Sleeps in Class",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

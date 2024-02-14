@@ -1,8 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../App.css';
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -18,36 +16,48 @@ function Users() {
       });
   }, []);
 
+  const deleteUser = (id) => {
+    axios.delete(`http://localhost:3002/deleteUser/${id}`)
+      .then(() => {
+        console.log('User deleted successfully');
+        setUsers(users.filter(user => user._id !== id));
+      })
+      .catch(error => {
+        console.error('Error deleting user:', error);
+      });
+  };
+
   return (
     <div className='Container'>
-      <div className='mt-4'>
-      <div className="d-flex justify-content-center">
-      <Link to='/createUser' className='btn btn-success mb-3 p-2 w-50'>Click to add the hypersomniac</Link>
-      </div>
-      
-        <table className='table mt-4 table-bordered table-hover table-striped table-responsive '>
-          <thead className='table-dark'>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Time in minutes</th>
+      <Link to='/createUser' className='btn btn-success mb-3 mt-3 w-50 p-2 '>Add the hypersomniac</Link>
+      <table className='table table-bordered  table-striped table-hover table-responsive table-condensed mt-3 '>
+        <thead className='table-dark'>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>How long they slept ?</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(user => (
+            <tr key={user._id}>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.age}  <span>minutes</span></td>
+              <td>
+                <Link to={`/updateUser/${user._id}`} className='btn btn-primary'>Edit</Link>
+              </td>
+              <td>
+                <button onClick={() => deleteUser(user._id)} className='btn btn-danger'>Delete</button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {users.map(user => (
-              <tr key={user._id}>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.age} <span>Minutes</span></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
 
 export default Users;
-
-
