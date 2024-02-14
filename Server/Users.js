@@ -121,6 +121,17 @@ app.delete('/deleteUser/:id', (req, res) => {
     });
 });
 
+
+app.get('/users', (req, res) => {
+  User.find({})
+    .then(users => {
+      res.json(users);  
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    })
+})
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
