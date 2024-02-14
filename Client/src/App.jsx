@@ -186,6 +186,7 @@ import App from './components/MemeList';
 import './App.css';
 import CreateUser from './components/CreateUser';
 import UpdateUser from './components/UpdateUser';
+import Login from './components/Login';
 
 const Application = () => {
   return (
@@ -197,6 +198,8 @@ const Application = () => {
           <Route path="/createUser" element={<CreateUser />} />
           <Route path="/app" element={<App />} />
           <Route path='/updateUser/:id' element={<UpdateUser />} />
+          <Route path='/users' element={<Login />}>Element</Route>
+     
         </Routes>
       </div>
     </Router>
@@ -216,6 +219,7 @@ const Home = () => {
       </p>
       <div className="d-flex justify-content-center">
       <Link to="/app" className="btn btn-secondary ms-2 p-2 w-50">Go to App</Link>
+      <Link to="/users" className="btn btn-primary ms-2 p-2 w-50">Store Cookies</Link>
       </div>
       <Users />
     </div>
