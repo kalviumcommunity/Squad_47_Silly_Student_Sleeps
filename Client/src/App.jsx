@@ -185,6 +185,7 @@ import Users from './components/Users';
 import App from './components/MemeList';
 import './App.css';
 import CreateUser from './components/CreateUser';
+import UpdateUser from './components/UpdateUser';
 
 const Application = () => {
   return (
@@ -195,6 +196,7 @@ const Application = () => {
           <Route path="/" element={<Home />} />
           <Route path="/createUser" element={<CreateUser />} />
           <Route path="/app" element={<App />} />
+          <Route path='/updateUser/:id' element={<UpdateUser />} />
         </Routes>
       </div>
     </Router>
