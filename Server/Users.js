@@ -1,13 +1,47 @@
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const User = require('./User');
+const Joi = require('joi');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://janhavi:janhavi02@cluster0.anz3bbv.mongodb.net/?retryWrites=true&w=majority', {
+
+const UserSchema = Joi.object({
+  name: Joi.string().required().messages({
+    'string.base': 'Name must be a string',
+    'string.empty': 'Name cannot be empty',
+    'any.required': 'Name is required',
+  }),
+  email: Joi.string().email().required().messages({
+    'string.base': 'Email must be a string',
+    'string.email': 'Email must be a valid email address',
+    'string.empty': 'Email cannot be empty',
+    'any.required': 'Email is required',
+  }),
+  age: Joi.number().integer().min(1).required().messages({
+    'number.base': 'Age must be a number',
+    'number.integer': 'Time must be an integer',
+    'number.min': 'Time must be at least 1',
+    'any.required': 'Time is required',
+  }),
+});
+
+// Middleware for Joi validation
+const validateUser = (req, res, next) => {
+  const { error } = UserSchema.validate(req.body);
+  if (error) {
+    console.log("Joi validation error:", error.message); 
+    return res.status(400).json({ error: error.details[0].message });
+  }
+  next();
+};
+
+// MongoDB connection
+mongoose.connect('mongodb+srv://janhavi:janhavi02@cluster0.anz3bbv.mongodb.net/?retryWrites=true&w=majority',{
   dbName: 'Express',
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -19,6 +53,7 @@ mongoose.connect('mongodb+srv://janhavi:janhavi02@cluster0.anz3bbv.mongodb.net/?
   console.error('Error connecting to MongoDB:', err);
 });
 
+// CRUD endpoints
 app.get("/users", (req, res) => {
   User.find()
     .then(users => res.json(users))
@@ -28,7 +63,7 @@ app.get("/users", (req, res) => {
     });
 });
 
-app.post("/createUser", (req, res) => {
+app.post("/createUser", validateUser, (req, res) => {
   User.create(req.body)
     .then(user => res.json(user))
     .catch(err => {
@@ -37,7 +72,7 @@ app.post("/createUser", (req, res) => {
     });
 });
 
-app.put("/updateUser/:id", (req, res) => {
+app.put("/updateUser/:id", validateUser, (req, res) => {
   const id = req.params.id;
   User.findByIdAndUpdate(id, {
     name: req.body.name,
@@ -84,6 +119,12 @@ app.delete('/deleteUser/:id', (req, res) => {
       console.error(err);
       res.status(400).json({ error: err.message });
     });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Internal Server Error' });
 });
 
 const PORT = process.env.PORT || 3002;

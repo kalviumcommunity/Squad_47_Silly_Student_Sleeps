@@ -1,3 +1,4 @@
+//Code for fetching api from SSS database
 const express = require('express');
 const { MongoClient, ObjectId } = require('mongodb');
 const cors = require('cors');

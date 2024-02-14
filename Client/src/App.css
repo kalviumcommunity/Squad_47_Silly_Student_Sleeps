@@ -5,7 +5,6 @@ body {
   font-family: 'Arial', sans-serif;
   /* background-color:#f0f0f0; */
   /* background: 100%; */
-  background:linear-gradient(to right, #282c3449, #1270dbc7);
   box-sizing: border-box;
 }
 
@@ -119,6 +118,10 @@ p{
 
 .btn-success.mb-3.mt-3.w-50.p-2 {
   margin-left: 25.40%;
+}
+
+.container{
+  background-color: rgba(245, 245, 245, 0.5);
 }
 
 
