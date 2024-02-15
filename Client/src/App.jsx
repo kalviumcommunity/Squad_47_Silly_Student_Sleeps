@@ -219,7 +219,7 @@ const Home = () => {
       </p>
       <div className="d-flex justify-content-center">
       <Link to="/app" className="btn btn-secondary ms-2 p-2 w-50">Go to App</Link>
-      <Link to="/users" className="btn btn-primary ms-2 p-2 w-50">Store Cookies</Link>
+      <Link to="/users" className="btn btn-primary ms-2 p-2 w-50">Login</Link>
       </div>
       <Users />
     </div>

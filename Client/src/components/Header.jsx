@@ -1,10 +1,9 @@
 import React from 'react';
-import './Header.css';
 
 const Header = () => {
   return (
     <header>
-      <h1>||------------Silly Student Sleeps------------||</h1>
+      <marquee behavior="scroll" direction="right"> <h1>||------------Silly Student Sleeps------------||</h1></marquee>
     </header>
   );
 };

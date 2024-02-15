@@ -38,7 +38,7 @@ const Login = () => {
     return (
         <div>
             <form onSubmit={submit} className='container mt-5 mb-5 form text-center p-5 bg-light rounded shadow w-50 mx-auto'>
-                <h2 className='title text-center'> Store your cookies </h2>
+                <h2 className='title text-center'>Login to Sleep</h2>
                 <input type="text" placeholder='Enter your name' required className='form-control' value={name} onChange={(e) => setName(e.target.value)} />
                 <input type="email" placeholder='Enter your email' required className='form-control' value={email} onChange={(e) => setEmail(e.target.value)} />
                 <input type="number" placeholder='How long were they sleeping' required className='form-control' value={age} onChange={(e) => setAge(e.target.value)} />
