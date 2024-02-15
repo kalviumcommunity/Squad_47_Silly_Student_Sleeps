@@ -1,35 +1,37 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 
 const Login = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [age, setAge] = useState('');
+
     const navigate = useNavigate();
 
     const submit = (e) => {
         e.preventDefault();
-        console.log(name);
 
-        // Store data in cookie Format
         document.cookie = `name=${name}; expires=Fri, 1 Dec 9999 23:59:59 GMT`;
         document.cookie = `email=${email}; expires=Fri, 1 Dec 9999 23:59:59 GMT`;
         document.cookie = `age=${age}; expires=Fri, 1 Dec 9999 23:59:59 GMT`;
-
         axios.post("http://localhost:3002/createUser", { name, email, age })
             .then(res => {
                 console.log(res.data);
+                document.cookie = `token=${res.data.token}; expires=Fri, 1 Dec 9999 23:59:59 GMT`;  
+                console.log(document.cookie);
                 navigate("/users");
             })
             .catch(err => console.error(err));
     };
 
     const handelLogOut = () => {
-        document.cookie = 'name=; expires=Thu, 06 Jan 1950 00:00:00 GMT';
-        document.cookie = 'email=; expires=Thu, 06 Jan 1950 00:00:00 GMT';
-        document.cookie = 'age=; expires=Thu, 06 Jan 1950 00:00:00 GMT';
-
+            document.cookie = 'token=; expires=Thu, 06 Jan 1950 00:00:00 GMT';
+            document.cookie = 'name=; expires=Thu, 06 Jan 1950 00:00:00 GMT';
+            document.cookie = 'email=; expires=Thu, 06 Jan 1950 00:00:00 GMT';
+            document.cookie = 'age=; expires=Thu, 06 Jan 1950 00:00:00 GMT';
         navigate('/');
     };
 
@@ -51,3 +53,4 @@ const Login = () => {
 };
 
 export default Login;
+
