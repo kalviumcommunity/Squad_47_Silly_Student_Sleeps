@@ -124,6 +124,15 @@ p{
   background-color: rgba(245, 245, 245, 0.5);
 }
 
+.meme-selection{
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 
 
 
