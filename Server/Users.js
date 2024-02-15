@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const jwt = require('jsonwebtoken'); 
 const User = require('./User');
 const Joi = require('joi');
 
@@ -9,6 +10,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// JWT secret key
+const JWT_SECRET_KEY = 'Janhavi';
 
 const UserSchema = Joi.object({
   name: Joi.string().required().messages({
@@ -63,15 +66,20 @@ app.get("/users", (req, res) => {
     });
 });
 
+// Creating JWT token
 app.post("/createUser", validateUser, (req, res) => {
   User.create(req.body)
-    .then(user => res.json(user))
+    .then(user => {
+      const token = jwt.sign({ userId: user._id }, JWT_SECRET_KEY);
+      res.json({ token });
+    })
     .catch(err => {
       console.error(err);
       res.status(400).json({ error: err.message });
     });
 });
 
+// Update user endpoint
 app.put("/updateUser/:id", validateUser, (req, res) => {
   const id = req.params.id;
   User.findByIdAndUpdate(id, {
@@ -91,6 +99,7 @@ app.put("/updateUser/:id", validateUser, (req, res) => {
   });
 });
 
+// Get user by ID endpoint
 app.get('/getUser/:id', (req, res) => {
   const id = req.params.id;
   User.findById(id)
@@ -106,6 +115,7 @@ app.get('/getUser/:id', (req, res) => {
     });
 });
 
+// Delete user endpoint
 app.delete('/deleteUser/:id', (req, res) => {
   const id = req.params.id;
   User.findByIdAndDelete(id)
@@ -121,17 +131,6 @@ app.delete('/deleteUser/:id', (req, res) => {
     });
 });
 
-
-app.get('/users', (req, res) => {
-  User.find({})
-    .then(users => {
-      res.json(users);  
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: 'Internal Server Error' });
-    })
-})
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -142,3 +141,4 @@ const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
